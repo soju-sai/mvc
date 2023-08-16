@@ -3,6 +3,30 @@
 <p><%= @article.body %></p>
 <p><%= link_to "Edit", edit_article_path(@article) %></p>
 <p><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></p>
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+} %></p>
+
+<h1>Comments</h1>
+<% @article.comments.each do |comment| %>
+<ul>
+  <li>commentor: <%= comment.commentor %></li>
+  <li>body: <%= comment.body %></li>
+</ul>
+<% end %>
+<h2>Add a comment:</h2>
+<p>
+  <%= form_with model: [@article, @article.comments.build] do | form | %>
+    <div>
+      <%= form.label :commentor %><br>
+      <%= form.text_field :commentor %>
+    </div>
+    <div>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</p>
