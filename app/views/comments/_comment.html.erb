@@ -1,4 +1,6 @@
-<ul>
-  <li>commentor: <%= comment.commentor %></li>
-  <li>body: <%= comment.body %></li>
-</ul>
+<% unless comment.archived? %>
+  <ul>
+    <li>commentor: <%= comment.commentor %></li>
+    <li>body: <%= comment.body %></li>
+  </ul>
+<% end %>
