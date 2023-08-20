@@ -3,4 +3,11 @@
     <li>commentor: <%= comment.commentor %></li>
     <li>body: <%= comment.body %></li>
   </ul>
+  <p>
+    <%= link_to "Delete comment", [comment.article, comment], 
+    data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </p>
 <% end %>
